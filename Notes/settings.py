@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRETKEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['.notes.erics.software','34.135.226.125','.erics.software','localhost']
 
 
 # Application definition
@@ -93,13 +93,14 @@ WSGI_APPLICATION = 'Notes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'notes',
+	'USER': 'postgres',
+	'PASSWORD': 'Apple123',
+	'HOST': 'localhost',
+	'PORT': '',
     }
 }
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
